@@ -1,0 +1,35 @@
+Sub SummofTable()
+
+Dim Ticker As String
+Dim StockVolume, TickerRow, VolumeRow, PercentRow, YearRow As Integer
+
+StockVolume = 0
+TickerRow = 2
+VolumeRow = 2
+
+
+
+For i = 2 To ActiveSheet.UsedRange.Rows.Count
+
+    If (Cells(i, 1).Value <> Cells(i + 1, 1)) Then
+        StockVolume = StockVolume + Cells(i, "G").Value
+        
+        Cells(TickerRow, "I").Value = Cells(i, 1).Value
+        Cells(VolumeRow, "J").Value = StockVolume
+        StockVolume = 0
+        
+        
+        TickerRow = TickerRow + 1
+        VolumeRow = VolumeRow + 1
+
+        
+    Else
+        StockVolume = StockVolume + Cells(i, "G").Value
+    End If
+Next i
+
+
+
+
+End Sub
+
